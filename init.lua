@@ -1,6 +1,6 @@
 -- local vimrc = vim.fn.stdpath 'config' .. './vimrc.vim'
 -- vim.cmd.source(vimrc)
--- vim.g.python3_host_prog = 'C:\\Users\\GiovanniPatruno\\AppData\\Local\\nvim-data\\venv\\Scripts\\python.exe'
+vim.g.python3_host_prog = 'C:\\Users\\GiovanniPatruno\\AppData\\Local\\nvim-data\\venv\\Scripts\\python.exe'
 require 'core.options' -- Load general options
 require 'core.keymaps' -- Load general keymaps
 require 'core.snippets' -- Custom code snippets
