@@ -31,3 +31,11 @@ require('lazy').setup {
   require 'plugins.misc',
   require 'plugins.comment',
 }
+
+local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+parser_config.jai = {
+  install_info = {
+    url = 'C:\\Users\\GiovanniPatruno\\repos\\personal\\jai\\tree-sitter-jai',
+    files = { 'src/parser.c' },
+  },
+}
