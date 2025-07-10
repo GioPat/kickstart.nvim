@@ -26,10 +26,10 @@ vim.keymap.set('n', 'n', 'nzzzv', opts)
 vim.keymap.set('n', 'N', 'Nzzzv', opts)
 
 -- Resize with arrows
-vim.keymap.set('n', '<M-Up>', ':resize -2<CR>', opts)
-vim.keymap.set('n', '<M-Down>', ':resize +2<CR>', opts)
-vim.keymap.set('n', '<M-Left>', ':vertical resize -2<CR>', opts)
-vim.keymap.set('n', '<M-Right>', ':vertical resize +2<CR>', opts)
+vim.keymap.set('n', '<M-Up>', ':resize +2<CR>', opts)
+vim.keymap.set('n', '<M-Down>', ':resize -2<CR>', opts)
+vim.keymap.set('n', '<M-Left>', ':vertical resize +2<CR>', opts)
+vim.keymap.set('n', '<M-Right>', ':vertical resize -2<CR>', opts)
 
 -- Buffers
 vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts)
@@ -48,12 +48,19 @@ vim.keymap.set('n', '<C-Up>', ':wincmd k<CR>', opts)
 vim.keymap.set('n', '<C-Down>', ':wincmd j<CR>', opts)
 vim.keymap.set('n', '<C-Left>', ':wincmd h<CR>', opts)
 vim.keymap.set('n', '<C-Right>', ':wincmd l<CR>', opts)
+-- ... and navigate between terminals
+-- Add terminal mode window navigation
+vim.keymap.set('t', '<C-Up>', [[<C-\><C-n>:wincmd k<CR>]], opts)
+vim.keymap.set('t', '<C-Down>', [[<C-\><C-n>:wincmd j<CR>]], opts)
+vim.keymap.set('t', '<C-Left>', [[<C-\><C-n>:wincmd h<CR>]], opts)
+vim.keymap.set('t', '<C-Right>', [[<C-\><C-n>:wincmd l<CR>]], opts)
 
 -- Tabs
 vim.keymap.set('n', '<leader>ot', ':tabnew<CR>', opts) -- open new tab
 vim.keymap.set('n', '<leader>ct', ':tabclose<CR>', opts) -- close current tab
 vim.keymap.set('n', '<leader>nt', ':tabn<CR>', opts) --  go to next tab
 vim.keymap.set('n', '<leader>pt', ':tabp<CR>', opts) --  go to previous tab
+vim.keymap.set('n', '<C-T>', ':ToggleTerm<CR>', opts)
 
 -- Toggle line wrapping
 vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts)
@@ -73,3 +80,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- Git keymaps
 vim.keymap.set('n', '<leader>g', ':G<CR>', opts)
+
+-- misc keymaps
+vim.keymap.set('n', '<leader>cp', ":echo expand('%:p')<CR>", opts)

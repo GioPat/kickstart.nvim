@@ -30,6 +30,7 @@ require('lazy').setup {
   require 'plugins.indent-blankline',
   require 'plugins.misc',
   require 'plugins.comment',
+  require 'plugins.toggleterm',
 }
 
 local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
