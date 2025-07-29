@@ -82,4 +82,5 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('n', '<leader>g', ':G<CR>', opts)
 
 -- misc keymaps
+-- Get path of current directory
 vim.keymap.set('n', '<leader>cp', ":echo expand('%:p')<CR>", opts)
