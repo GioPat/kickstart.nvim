@@ -31,6 +31,7 @@ require('lazy').setup {
   require 'plugins.misc',
   require 'plugins.comment',
   require 'plugins.toggleterm',
+  require 'plugins.surround',
 }
 
 local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
