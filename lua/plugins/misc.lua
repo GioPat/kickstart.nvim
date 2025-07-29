@@ -12,13 +12,23 @@ return {
     -- Hints keybinds
     'folke/which-key.nvim',
   },
-  {
-    -- Autoclose parentheses, brackets, quotes, etc.
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    config = true,
-    opts = {},
-  },
+  -- {
+  --   -- Autoclose parentheses, brackets, quotes, etc.
+  --   'windwp/nvim-autopairs',
+  --   dependencies = { 'hrsh7th/nvim-cmp' },
+  --   config = function()
+  --     require('nvim-autopairs').setup {
+  --       check_ts = true,
+  --       ts_config = {
+  --         lua = { 'string' },
+  --         javascript = { 'template_string' },
+  --       },
+  --       disable_file_type = { 'TelescopePrompt' },
+  --       disable_in_macro = false,
+  --       ignored_next_char = '[%w%.]',
+  --     }
+  --   end,
+  -- },
   {
     -- Highlight todo, notes, etc in comments
     'folke/todo-comments.nvim',

@@ -84,3 +84,11 @@ vim.keymap.set('n', '<leader>g', ':G<CR>', opts)
 -- misc keymaps
 -- Get path of current directory
 vim.keymap.set('n', '<leader>cp', ":echo expand('%:p')<CR>", opts)
+
+-- Autoclose...
+-- Auto-close with tab, but add smart overwrite
+vim.keymap.set('i', '"<Tab>', '""<Left>')
+vim.keymap.set('i', "'<Tab>", "''<Left>")
+vim.keymap.set('i', '(<Tab>', '()<Left>')
+vim.keymap.set('i', '[<Tab>', '[]<Left>')
+vim.keymap.set('i', '{<Tab>', '{}<Left>')

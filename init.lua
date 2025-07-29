@@ -15,6 +15,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldenable = true
+vim.opt.foldlevelstart = 99
+
 -- Set up plugins
 require('lazy').setup {
   require 'plugins.neotree',
