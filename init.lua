@@ -1,6 +1,10 @@
 -- local vimrc = vim.fn.stdpath 'config' .. './vimrc.vim'
 -- vim.cmd.source(vimrc)
-vim.g.python3_host_prog = 'C:\\Users\\GiovanniPatruno\\AppData\\Local\\nvim-data\\venv\\Scripts\\python.exe'
+if package.config:sub(1,1) == "\\" then
+  vim.g.python3_host_prog = 'C:\\Users\\GiovanniPatruno\\AppData\\Local\\nvim-data\\venv\\Scripts\\python.exe'
+else
+  vim.g.python3_host_prog = '/home/giovanni/.local/share/neovim/venv/bin/python3'
+	end
 require 'core.options' -- Load general options
 require 'core.keymaps' -- Load general keymaps
 require 'core.snippets' -- Custom code snippets
