@@ -1,5 +1,4 @@
 function get_python_path()
-  print 'HELLO'
   local base_venv_path = os.getenv 'VIRTUAL_ENV'
   local uname = vim.loop.os_uname()
   local os_name = uname.sysname
@@ -153,13 +152,14 @@ return {
       pyright = {},
       rust_analyzer = {},
       zls = {},
-      -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-      --
-      -- Some languages (like typescript) have entire language plugins that can be useful:
-      --    https://github.com/pmizio/typescript-tools.nvim
-      --
-      -- But for many setups, the LSP (`tsserver`) will work just fine
-      tsserver = {},
+      ts_ls = {},
+      vue_ls = {
+        init_options = {
+          typescript = {
+            tsdk = vim.fn.stdpath 'data' .. '/mason/packages/typescript-language-server/node_modules/typescript/lib',
+          },
+        },
+      },
       ruff = {},
       pylsp = {
         settings = {
@@ -183,7 +183,6 @@ return {
       sqlls = {},
       jsonls = {},
       yamlls = {},
-
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -203,6 +202,7 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
+      'vue-language-server', -- Used by ts_ls via @vue/typescript-plugin
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -218,5 +218,10 @@ return {
         end,
       },
     }
+
+    -- Explicitly set up ts_ls (mason-lspconfig handler doesn't always trigger for it)
+    if not require('lspconfig').ts_ls.manager then
+      require('lspconfig').ts_ls.setup({ capabilities = capabilities })
+    end
   end,
 }
