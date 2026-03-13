@@ -1,10 +1,11 @@
 -- local vimrc = vim.fn.stdpath 'config' .. './vimrc.vim'
 -- vim.cmd.source(vimrc)
-if package.config:sub(1,1) == "\\" then
-  vim.g.python3_host_prog = 'C:\\Users\\GiovanniPatruno\\AppData\\Local\\nvim-data\\venv\\Scripts\\python.exe'
+if package.config:sub(1, 1) == '\\' then
+  vim.notify 'TEST!!!'
+  vim.g.python3_host_prog = 'D:/config/nvim/venv/Scripts/python.exe'
 else
   vim.g.python3_host_prog = '/home/giovanni/.local/share/neovim/venv/bin/python3'
-	end
+end
 require 'core.options' -- Load general options
 require 'core.keymaps' -- Load general keymaps
 require 'core.snippets' -- Custom code snippets
@@ -43,10 +44,9 @@ require('lazy').setup {
   require 'plugins.surround',
 }
 
-local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-parser_config.jai = {
-  install_info = {
-    url = 'C:\\Users\\GiovanniPatruno\\repos\\personal\\jai\\tree-sitter-jai',
-    files = { 'src/parser.c' },
+vim.treesitter.language.register('jai', 'jai')
+vim.filetype.add {
+  extension = {
+    jai = 'jai',
   },
 }
