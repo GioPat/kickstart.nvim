@@ -1,11 +1,9 @@
 -- local vimrc = vim.fn.stdpath 'config' .. './vimrc.vim'
 -- vim.cmd.source(vimrc)
-if package.config:sub(1, 1) == '\\' then
-  vim.notify 'TEST!!!'
-  vim.g.python3_host_prog = 'D:/config/nvim/venv/Scripts/python.exe'
-else
-  vim.g.python3_host_prog = '/home/giovanni/.local/share/neovim/venv/bin/python3'
-end
+local python_path = vim.fn.system('uv python find'):gsub('%s+$', '')
+vim.g.python3_host_prog = python_path
+local python_dir = vim.fn.fnamemodify(python_path, ':h')
+vim.env.PATH = python_dir .. (package.config:sub(1, 1) == '\\' and ';' or ':') .. vim.env.PATH
 require 'core.options' -- Load general options
 require 'core.keymaps' -- Load general keymaps
 require 'core.snippets' -- Custom code snippets
